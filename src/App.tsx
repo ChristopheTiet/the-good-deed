@@ -34,9 +34,14 @@ type OptionsProps = {
 }
 
 class Options extends Component<OptionsProps> {
-  handleRemoveAll() {
-    alert('Removed all');
+  constructor(props: OptionsProps | Readonly<OptionsProps>) {
+    super(props);
+    this.handleRemoveAll = this.handleRemoveAll.bind(this);
   }
+  handleRemoveAll() {
+    console.log(this.props.options);
+  }
+
   render() {
     return (
       <div>
