@@ -1,52 +1,100 @@
 import React, { Component } from 'react';
 
-class Header extends Component {
+type HeaderProps = {
+  title: string;
+  subtitle: string;
+}
+
+class Header extends Component<HeaderProps> {
   render() {
     return (
       <div>
-        <h1>Indecision App</h1>
-        <h2>Put your life in the hands of a computer</h2>
+        <h1>{this.props.title}</h1>
+        <h2>{this.props.subtitle}</h2>
       </div>
     );
   }
 }
 
 class Action extends Component {
+  handlePick() {
+    alert('HandlePick');
+  }
   render() {
     return (
       <div>
-        <button>What should I do?</button>
+        <button onClick={this.handlePick}>What should I do?</button>
+      </div>
+    )
+  }
+}
+
+type OptionsProps = {
+  options: string[];
+}
+
+class Options extends Component<OptionsProps> {
+  handleRemoveAll() {
+    alert('Removed all');
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={this.handleRemoveAll}>Remove all</button>
+        {this.props.options.map(option => <Option key={option} optionText={option}/>)}
+      </div>
+    )
+  }
+}
+
+class AddOption extends Component {
+  handleAddOption(e: React.FormEvent) {
+    e.preventDefault();
+
+    const target = e.target as typeof e.target & {
+      option: { value: string };
+    };
+
+    const option = target.option.value;
+
+    alert(option)
+  }
+  render() {
+    return (
+      <form onSubmit={this.handleAddOption}>
+        <input type='text' name='option'></input>
+        <button>Add Option</button>
+      </form>
+    )
+  }
+}
+
+type OptionProps = {
+  optionText: string;
+}
+
+class Option extends Component<OptionProps> {
+  render() {
+    return (
+      <div>
+        {this.props.optionText}
       </div>
     )
   }
 }
 
 
-class Options extends Component {
-  render() {
-    return (
-      <div>Options</div>
-    )
-  }
-}
-
-class AddOption extends Component {
-  render() {
-    return (
-      <div>Add options</div>
-    )
-  }
-}
-
-function App() {
+function IndecisionApp() {
+  const title: string = "Indecision App";
+  const subtitle: string = "Put your life in the hands of a computer";
+  const options: string[] = ["Thing one", "Thing two", "Thing four"]
   return (
    <div>
-     <h1>Title</h1>
-     <Header/>
+     <Header title={title} subtitle={subtitle}/>
      <Action/>
-     <Options/>
+     <Options options={options}/>
      <AddOption/>
    </div>)
 }
 
-export default App;
+export default IndecisionApp;
