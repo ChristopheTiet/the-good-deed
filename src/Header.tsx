@@ -1,19 +1,19 @@
-import { Component } from 'react';
-
 interface HeaderProps {
-  title: string;
-  subtitle: string;
+    title: string;
+    subtitle: string;
 }
 
-class Header extends Component<HeaderProps> {
-  render() {
+const Header = (props: HeaderProps) => {
     return (
-      <div>
-        <h1>{this.props.title}</h1>
-        <h2>{this.props.subtitle}</h2>
-      </div>
+        <div>
+            <h1>{props.title}</h1>
+            {props.subtitle && <h2>{props.subtitle}</h2>}
+        </div>
     );
-  }
-}
+};
 
-export default Header
+Header.defaultProps = {
+    title: "Default title",
+};
+
+export default Header;

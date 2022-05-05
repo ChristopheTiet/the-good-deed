@@ -9,11 +9,11 @@ interface AddOptionState {
 }
 
 interface FormElements extends HTMLFormControlsCollection {
-    option: HTMLInputElement
+    option: HTMLInputElement;
 }
 
 interface AddOptionFormElement extends HTMLFormElement {
-    readonly elements: FormElements
+    readonly elements: FormElements;
 }
 
 class AddOption extends Component<AddOptionProps, AddOptionState> {
@@ -21,8 +21,8 @@ class AddOption extends Component<AddOptionProps, AddOptionState> {
         super(props);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.state = {
-            error: undefined
-        }
+            error: undefined,
+        };
     }
 
     handleFormSubmit(e: React.FormEvent<AddOptionFormElement>) {
@@ -34,7 +34,7 @@ class AddOption extends Component<AddOptionProps, AddOptionState> {
 
         this.setState(() => ({ error }));
 
-        e.currentTarget.elements.option.value = '';
+        e.currentTarget.elements.option.value = "";
     }
 
     render() {
@@ -42,12 +42,11 @@ class AddOption extends Component<AddOptionProps, AddOptionState> {
             <div>
                 {this.state.error && <p> {this.state.error} </p>}
                 <form onSubmit={this.handleFormSubmit}>
-                    <input type='text' name='option'></input>
+                    <input type="text" name="option"></input>
                     <button>Add Option</button>
                 </form>
-
             </div>
-        )
+        );
     }
 }
 
