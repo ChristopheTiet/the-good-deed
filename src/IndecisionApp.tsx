@@ -16,16 +16,19 @@ class IndecisionApp extends Component<IndecisionAppProps, IndecisionAppState> {
     static defaultProps = {
         options: [],
     };
-    constructor(props: IndecisionAppProps | Readonly<IndecisionAppProps>) {
-        super(props);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
-        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        this.handlePick = this.handlePick.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.state = {
-            options: props.options,
-        };
-    }
+
+    state = {
+        options: this.props.options,
+    };
+
+    // constructor(props: IndecisionAppProps | Readonly<IndecisionAppProps>) {
+    //     super(props);
+    //     this.handleDeleteOption = this.handleDeleteOption.bind(this);
+    //     this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+    //     this.handlePick = this.handlePick.bind(this);
+    //     this.handleAddOption = this.handleAddOption.bind(this);
+    //     this.state =
+    // }
 
     componentDidMount() {
         try {
@@ -48,25 +51,26 @@ class IndecisionApp extends Component<IndecisionAppProps, IndecisionAppState> {
             localStorage.setItem("options", options);
         }
     }
-    handleDeleteOption(optionToRemove: string) {
+
+    handleDeleteOption = (optionToRemove: string) => {
         this.setState((prevState) => ({
             options: prevState.options.filter(
                 (option: string) => optionToRemove !== option
             ),
         }));
-    }
+    };
 
-    handleDeleteOptions() {
+    handleDeleteOptions = () => {
         this.setState(() => ({ options: [] }));
-    }
+    };
 
-    handlePick() {
+    handlePick = () => {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
         alert(option);
-    }
+    };
 
-    handleAddOption(option: string) {
+    handleAddOption = (option: string) => {
         if (!option) {
             return "Please enter a value.";
         }
@@ -76,7 +80,7 @@ class IndecisionApp extends Component<IndecisionAppProps, IndecisionAppState> {
         this.setState((prevState) => ({
             options: prevState.options.concat(option),
         }));
-    }
+    };
     render() {
         // const title: string = "Indecision App";
         const subtitle: string = "Put your life in the hands of a computer";

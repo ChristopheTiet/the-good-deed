@@ -17,15 +17,9 @@ interface AddOptionFormElement extends HTMLFormElement {
 }
 
 class AddOption extends Component<AddOptionProps, AddOptionState> {
-    constructor(props: AddOptionProps | Readonly<AddOptionProps>) {
-        super(props);
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
-        this.state = {
-            error: undefined,
-        };
-    }
+    state = { error: undefined };
 
-    handleFormSubmit(e: React.FormEvent<AddOptionFormElement>) {
+    handleFormSubmit = (e: React.FormEvent<AddOptionFormElement>) => {
         e.preventDefault();
 
         const option = e.currentTarget.elements.option.value;
@@ -35,7 +29,7 @@ class AddOption extends Component<AddOptionProps, AddOptionState> {
         this.setState(() => ({ error }));
 
         e.currentTarget.elements.option.value = "";
-    }
+    };
 
     render() {
         return (
