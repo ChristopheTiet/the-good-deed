@@ -84,7 +84,7 @@ class IndecisionApp extends Component<IndecisionAppProps, IndecisionAppState> {
         const subtitle: string = "Put your life in the hands of a computer";
         return (
             <div>
-                <Header subtitle={subtitle} />
+                <Header title="Good Deeds App" subtitle={subtitle} />
                 <Action
                     hasOptions={this.state.options.length > 0}
                     handlePick={this.handlePick}
