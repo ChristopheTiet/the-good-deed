@@ -1,20 +1,22 @@
-import React, { Component } from "react";
+import { Component } from "react";
+import CssBaseline from '@mui/material/CssBaseline';
 import Action from "./Action";
 import AddOption from "./AddOption";
 import Header from "./Header";
 import OptionModal from "./OptionModal";
 import Options from "./Options";
+import { Box, Container } from "@mui/material";
 
-interface IndecisionAppProps {
+interface TheGoodDeedAppProps {
     options: string[];
 }
 
-interface IndecisionAppState {
+interface TheGoodDeedAppState {
     options: string[];
     selectedOption: string | undefined;
 }
 
-class IndecisionApp extends Component<IndecisionAppProps, IndecisionAppState> {
+class TheGoodDeedApp extends Component<TheGoodDeedAppProps, TheGoodDeedAppState> {
     static defaultProps = {
         options: [],
     };
@@ -37,8 +39,8 @@ class IndecisionApp extends Component<IndecisionAppProps, IndecisionAppState> {
     }
 
     componentDidUpdate(
-        prevProps: IndecisionAppProps,
-        prevState: IndecisionAppState
+        prevProps: TheGoodDeedAppProps,
+        prevState: TheGoodDeedAppState
     ) {
         if (prevState.options.length !== this.state.options.length) {
             const options = JSON.stringify(this.state.options);
@@ -80,28 +82,30 @@ class IndecisionApp extends Component<IndecisionAppProps, IndecisionAppState> {
         }));
     };
     render() {
-        // const title: string = "Indecision App";
-        const subtitle: string = "Put your life in the hands of a computer";
+        const subtitle: string = "Bring good vibes to the world!";
         return (
-            <div>
-                <Header title="Good Deeds App" subtitle={subtitle} />
+            <Box sx={{ display:'flex', flexDirection:'column', backgroundColor:'#e1e2e1', width: '100vw', height: '100vh'}}>
+                <CssBaseline />
+                <Header title="The Good Deed" subtitle={subtitle} />
                 <Action
                     hasOptions={this.state.options.length > 0}
                     handlePick={this.handlePick}
                 />
-                <Options
-                    options={this.state.options}
-                    handleDeleteOption={this.handleDeleteOption}
-                    handleDeleteOptions={this.handleDeleteOptions}
-                />
-                <AddOption handleAddOption={this.handleAddOption} />
-                <OptionModal
-                    selectedOption={this.state.selectedOption}
-                    closeOptionModal={this.closeOptionModal}
-                />
-            </div>
+                <Container sx={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
+                    <Options
+                        options={this.state.options}
+                        handleDeleteOption={this.handleDeleteOption}
+                        handleDeleteOptions={this.handleDeleteOptions}
+                    />
+                    <AddOption handleAddOption={this.handleAddOption} />
+                    <OptionModal
+                        selectedOption={this.state.selectedOption}
+                        closeOptionModal={this.closeOptionModal}
+                    />
+                </Container>
+            </Box>
         );
     }
 }
 
-export default IndecisionApp;
+export default TheGoodDeedApp;

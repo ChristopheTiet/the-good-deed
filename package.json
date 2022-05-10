@@ -1,5 +1,5 @@
 {
-  "name": "good-deeds-app",
+  "name": "the-good-deed",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,7 +17,6 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-modal": "^3.15.1",
-    "react-scripts": "5.0.1",
     "typescript": "^4.6.4",
     "web-vitals": "^2.1.4"
   },
@@ -46,6 +45,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-modal": "^3.13.1"
+    "@types/react-modal": "^3.13.1",
+    "react-scripts": "5.0.1"
   }
 }

@@ -1,3 +1,4 @@
+import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import Option from "./Option";
 
 interface OptionsProps {
@@ -7,11 +8,17 @@ interface OptionsProps {
 }
 
 const Options = (props: OptionsProps) => (
-    <div>
+    <Box sx={{display:'flex', flexDirection: 'column', justifyContent:'center', alignItems:'center'}}>
         {props.options.length === 0 && (
-            <p>Please add an option to get started!</p>
+            <Typography color={"error.main"}>Please add an option to get started!</Typography>
         )}
-        <button onClick={props.handleDeleteOptions}>Remove all</button>
+        {props.options.length !== 0 && (
+            <Stack direction="row" alignItems="center" justifyContent="space-between">
+                <Typography>Your options</Typography>
+                <Button onClick={props.handleDeleteOptions}>Remove all</Button>
+            </Stack>
+        )}
+
         {props.options.map((option) => (
             <Option
                 key={option}
@@ -19,7 +26,7 @@ const Options = (props: OptionsProps) => (
                 handleDeleteOption={props.handleDeleteOption}
             />
         ))}
-    </div>
+    </Box>
 );
 
 export default Options;

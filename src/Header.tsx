@@ -11,12 +11,10 @@
 
 // export default Header;
 
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import { Container, Stack } from "@mui/material";
 
 interface HeaderProps {
     title: string;
@@ -25,21 +23,26 @@ interface HeaderProps {
 
 const Header = (props: HeaderProps) => {
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-                <Toolbar>
-                    <ThumbUpAltIcon />
 
-                    <Typography
-                        variant="h6"
-                        component="div"
-                        sx={{ flexGrow: 1 }}
-                    >
-                        Good Deeds App
-                    </Typography>
-                </Toolbar>
+            <AppBar position="static">
+                <Container sx={{ display: 'flex', flexDirection: 'column', alignItems:'center'}}>
+                    <Box>
+                        <Typography
+                            variant="h3"
+                            component="div"
+                        >
+                            { props.title }
+                        </Typography>
+                        <Typography
+                            variant="h6"
+                            component="div"
+                        >
+                            { props.subtitle }
+                        </Typography>
+                    </Box>
+                </Container>
+
             </AppBar>
-        </Box>
     );
 };
 
