@@ -1,3 +1,5 @@
+import { Alert, Box, Button, Snackbar, TextField } from "@mui/material";
+import { height } from "@mui/system";
 import { Component } from "react";
 
 interface AddOptionProps {
@@ -33,13 +35,37 @@ class AddOption extends Component<AddOptionProps, AddOptionState> {
 
     render() {
         return (
-            <div>
-                {this.state.error && <p> {this.state.error} </p>}
-                <form onSubmit={this.handleFormSubmit}>
-                    <input type="text" name="option"></input>
-                    <button>Add Option</button>
-                </form>
-            </div>
+            <Box>
+                {this.state.error && (
+                    <Box>
+                        <Snackbar open={true} autoHideDuration={6000}>
+                            <Alert variant="filled" severity="error">
+                                {this.state.error}
+                            </Alert>
+                        </Snackbar>
+                    </Box>
+                )}
+                <Box
+                    component="form"
+                    onSubmit={this.handleFormSubmit}
+                    sx={{ display: "flex" }}
+                >
+                    <TextField
+                        sx={{ mr: "10px" }}
+                        size="small"
+                        type="text"
+                        name="option"
+                    />
+                    <Button
+                        size="small"
+                        type="submit"
+                        variant="contained"
+                        color="secondary"
+                    >
+                        Add Option
+                    </Button>
+                </Box>
+            </Box>
         );
     }
 }

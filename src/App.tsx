@@ -1,5 +1,5 @@
 import { Component } from "react";
-import CssBaseline from '@mui/material/CssBaseline';
+import CssBaseline from "@mui/material/CssBaseline";
 import Action from "./Action";
 import AddOption from "./AddOption";
 import Header from "./Header";
@@ -16,9 +16,18 @@ interface TheGoodDeedAppState {
     selectedOption: string | undefined;
 }
 
-class TheGoodDeedApp extends Component<TheGoodDeedAppProps, TheGoodDeedAppState> {
+class TheGoodDeedApp extends Component<
+    TheGoodDeedAppProps,
+    TheGoodDeedAppState
+> {
     static defaultProps = {
-        options: [],
+        options: [
+            "Random act of kindness",
+            "Tip generously",
+            "Donate food or clothing",
+            "Cook for someone who is sick",
+            "Be a volunteer babysitter",
+        ],
     };
 
     state = {
@@ -31,8 +40,10 @@ class TheGoodDeedApp extends Component<TheGoodDeedAppProps, TheGoodDeedAppState>
             const json = localStorage.getItem("options");
             if (json) {
                 const options = JSON.parse(json);
-                if (options) {
+                if (options.length !== 0) {
                     this.setState(() => ({ options }));
+                } else {
+                    this.setState(() => ({ options: this.props.options }));
                 }
             }
         } catch {}
@@ -84,14 +95,33 @@ class TheGoodDeedApp extends Component<TheGoodDeedAppProps, TheGoodDeedAppState>
     render() {
         const subtitle: string = "Bring good vibes to the world!";
         return (
-            <Box sx={{ display:'flex', flexDirection:'column', backgroundColor:'#e1e2e1', width: '100vw', height: '100vh'}}>
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    backgroundColor: "#e1e2e1",
+                    width: "100vw",
+                    height: "100vh",
+                }}
+            >
                 <CssBaseline />
                 <Header title="The Good Deed" subtitle={subtitle} />
                 <Action
                     hasOptions={this.state.options.length > 0}
                     handlePick={this.handlePick}
                 />
-                <Container sx={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
+                <Container
+                    disableGutters
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        border: "solid",
+                        borderColor: "#42a5f5",
+                        backgroundColor: "#29b6f6",
+                        width: "340px",
+                    }}
+                >
                     <Options
                         options={this.state.options}
                         handleDeleteOption={this.handleDeleteOption}
