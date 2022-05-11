@@ -15,7 +15,7 @@ const Action = (props: ActionProps) => (
             sx={{m:2, px:10, py: 4}}
             size="large">
                 <Typography>
-                     Today's good deed
+                     Do a good deed
                 </Typography>
         </Button>
     </Container>

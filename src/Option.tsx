@@ -1,4 +1,5 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircle';
 
 type OptionProps = {
     optionText: string;
@@ -23,7 +24,7 @@ const Option = (props: OptionProps) => (
                     props.handleDeleteOption(props.optionText);
                 }}
             >
-                Remove
+                <RemoveCircleOutlineIcon/>
             </Button>
         </Stack>
     </Box>

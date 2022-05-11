@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is a toy project to get my hands into ReactJs using TypeScript.
+This project is a toy project to get my hands into ReactJs using TypeScript and Material UI.
 
 The goal was to type every single variable and not use the any keyword.
 

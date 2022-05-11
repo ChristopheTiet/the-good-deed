@@ -3,7 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Action from "./Action";
 import AddOption from "./AddOption";
 import Header from "./Header";
-import OptionModal from "./OptionModal";
+import OptionDialog from "./OptionDialog";
 import Options from "./Options";
 import { Box, Container } from "@mui/material";
 
@@ -59,7 +59,7 @@ class TheGoodDeedApp extends Component<
         }
     }
 
-    closeOptionModal = () => {
+    closeOptionDialog = () => {
         this.setState(() => ({ selectedOption: undefined }));
     };
 
@@ -117,8 +117,7 @@ class TheGoodDeedApp extends Component<
                         flexDirection: "column",
                         alignItems: "center",
                         border: "solid",
-                        borderColor: "#42a5f5",
-                        backgroundColor: "#29b6f6",
+                        borderColor: "#1565c0",
                         width: "340px",
                     }}
                 >
@@ -128,9 +127,9 @@ class TheGoodDeedApp extends Component<
                         handleDeleteOptions={this.handleDeleteOptions}
                     />
                     <AddOption handleAddOption={this.handleAddOption} />
-                    <OptionModal
+                    <OptionDialog
                         selectedOption={this.state.selectedOption}
-                        closeOptionModal={this.closeOptionModal}
+                        closeOptionDialog={this.closeOptionDialog}
                     />
                 </Container>
             </Box>

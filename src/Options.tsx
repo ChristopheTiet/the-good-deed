@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import Option from "./Option";
 
+
 interface OptionsProps {
     options: string[];
     handleDeleteOption: (option: string) => void;
@@ -15,7 +16,7 @@ interface OptionsProps {
 }
 
 const Options = (props: OptionsProps) => (
-    <Container
+    <Container disableGutters
         sx={{
             display: "flex",
             flexDirection: "column",
@@ -29,24 +30,24 @@ const Options = (props: OptionsProps) => (
             </Typography>
         )}
         {props.options.length !== 0 && (
-            <Box sx={{ width: "100%", mb: "20px" }}>
+            <Box sx={{ width: "100%", p: "10px", backgroundColor:"primary.main" }}>
                 <Stack
                     direction="row"
                     alignItems="center"
                     justifyContent="space-between"
                 >
-                    <Typography variant="h6">Your options</Typography>
+                    <Typography variant="h6" sx={{ color:"white"}}>Your options</Typography>
                     <Button
                         sx={{ textTransform: "none" }}
                         color="secondary"
                         onClick={props.handleDeleteOptions}
                     >
-                        Remove all
+                        <Typography>Remove all</Typography>
                     </Button>
                 </Stack>
             </Box>
         )}
-        <Box sx={{ width: "100%", mb: "20px" }}>
+        <Box sx={{ width: "100%", p: "20px", backgroundColor: "#29b6f6" }}>
             <Stack
                 spacing={1}
                 divider={<Divider orientation="horizontal" flexItem />}
